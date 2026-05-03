@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Albert & Siti</title>
+  <style>
+    body{
+      margin:0;
+      font-family:Arial,sans-serif;
+      background:#800000;
+      color:#fff;
+      text-align:center;
+      padding:40px;
+    }
+    h1{
+      color:#D4AF37;
+      font-family:Georgia,serif;
+      line-height:1.4;
+    }
+    .card{
+      max-width:700px;
+      margin:auto;
+      padding:30px;
+      border-radius:20px;
+      background:rgba(255,255,255,.05);
+    }
+    button{
+      padding:12px 18px;
+      border:0;
+      border-radius:8px;
+      background:#D4AF37;
+      cursor:pointer;
+      margin-top:12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <p>The Wedding of</p>
+    <h1>
+      Albert Jeremi Manurung<br />
+      Siti Sinurbaya Pardosi
+    </h1>
+
+    <p>21 Agustus 2026</p>
+    <p>Desa Parbagasan Janjimatogu, Kec. Uluan, Kab. Toba</p>
+
+    <button onclick="loadGuestbook()">Lihat Guestbook</button>
+
+    <div id="guestbook" style="margin-top:20px"></div>
+  </div>
+
+  <script>
+    async function loadGuestbook() {
+      const res = await fetch("http://localhost:3000/guestbook");
+      const data = await res.json();
+
+      const el = document.getElementById("guestbook");
+
+      el.innerHTML = data.map(item => `
+        <div style="margin-bottom:12px">
+          <strong>${item.name}</strong><br/>
+          ${item.message}
+        </div>
+      `).join("");
+    }
+  </script>
+</body>
+</html>
