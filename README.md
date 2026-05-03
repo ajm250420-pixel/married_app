@@ -1,4 +1,3 @@
-```
 # Batak Wedding Invitation
 ```bash
 docker compose stop
@@ -114,4 +113,3 @@ wsl --update
 ## Author
 
 Batak Wedding Invitation — Albert Jeremi Manurung
-```
